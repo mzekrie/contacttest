@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "423295328354",
+    "project_id": "contacttest-94ee5",
+    "storage_bucket": "contacttest-94ee5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423295328354:android:f88f33276f2a09e7e8b13b",
+        "android_client_info": {
+          "package_name": "com.example.contacttest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQfWxyMwS-r2pO3-V8IBwu1oLv_s_-AA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
