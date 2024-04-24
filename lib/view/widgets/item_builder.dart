@@ -99,8 +99,6 @@ class BuilderItem extends StatelessWidget {
   }
 }
 
-
-
 class ListContactItem extends StatelessWidget {
   List<Map> listItem;
   String contactType;

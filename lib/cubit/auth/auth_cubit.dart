@@ -29,11 +29,12 @@ class AuthCubit extends Cubit<AuthState> {
     UserCredential userCredential =
     await auth.createUserWithEmailAndPassword(email: email, password: password);
     userModel.id= userCredential.user!.uid;
-    // await storage.ref().child("image/").child("${userModel.id}").putFile(File(image!.path));
-    // userModel.pic = await storage.ref().child("image/").child("${userModel.id}").getDownloadURL();
     userModel.email = email;
     userModel.name = name;
     userModel.password = password.toString();
+    await storage.ref().child('image/').child("${userModel.id}").putFile(File(image!.path));
+    userModel.pic = await storage.ref().child('image/').child("${userModel.id}").getDownloadURL();
+
     await store.collection("profile").doc(userModel.id).
     set(userModel.toMap()) ;
     emit(AuthRegisterByEmailState());
