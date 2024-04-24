@@ -8,6 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/cupertino.dart';
 import '../Shared/constant.dart';
 import '../cubit/contact_cubit/contact_cubit.dart';
+import '../cubit/themes_cubit/themes_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,6 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
             appBar: AppBar(
               title: Text(ContactCubit.get(context).title
               [ContactCubit.get(context).currentIndex]),
+                actions:[Switch(value: ThemesCubit.get(context).isDark,
+                    onChanged: (value){
+                      ThemesCubit.get(context).changeTheme();
+                    }
+                )],
             ),
             key: scaffoldKey,
             body: Stack(

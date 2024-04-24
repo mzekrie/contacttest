@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -23,24 +22,7 @@ class AuthCubit extends Cubit<AuthState> {
   FirebaseStorage storage =FirebaseStorage.instance;
 // register email& password
 
-  // registerByEmailAndPassword({required String name,
-  //   required String email ,
-  //   required String password,
-  // })async{
-  //   UserCredential userCredential =
-  //   await  auth.createUserWithEmailAndPassword(email: email, password: password);
-  //   await storage.ref().child("image/").child("${userModel.id} as camera.png").putFile(File(image!.path));
-  //   userModel.pic = await storage.ref().child("image/").child("${userModel.id}.png").getDownloadURL();
-  //   userModel.email = email;
-  //   userModel.id= userCredential.user!.uid;
-  //   userModel.name = name;
-  //   userModel.password = password.toString();
-  //   await store.collection("profile").doc(userModel.id).
-  //   set(userModel.toMap()) ;
-  //   emit(AuthRegisterByEmailState());
-  // }
-
-  registerByEmailAndPassword({required String name,
+    registerByEmailAndPassword({required String name,
     required String email ,
     required String password,
   })async{
@@ -71,7 +53,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   registerByGoogle ()async{
     googleSignIn.signOut(); // to sign out the value
-    //esraa.amit@gmail.com
     emit(AuthLoadingState());
     GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
     GoogleSignInAuthentication? googleSignInAuthentication = await

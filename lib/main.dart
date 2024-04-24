@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contacttest/cubit/auth/auth_cubit.dart';
 import 'package:contacttest/cubit/contact_cubit/contact_cubit.dart';
+import 'package:contacttest/cubit/themes_cubit/themes_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'Shared/app_theme.dart';
 import 'cubit/observer.dart';
 import 'router/router.dart';
 import 'router/route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'firebase_options.dart';
 import 'package:sizer/sizer.dart';
 
@@ -37,23 +38,36 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (context) => ContactCubit() ..getContact()..getFavorite(), //to load the data of the list without inserting upon login to the page
               ),
-            ],
-            child: MaterialApp(
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
+              BlocProvider(
+                create: (context) => ThemesCubit() ,
               ),
-              // home: const LoginPage(),
-              //  routes: {
-              //    "login" : (context)=> const LoginPage(),
-              //    "register" : (context)=> const RegisterPage()
-              //  },
+            ],
+            child: BlocBuilder<ThemesCubit, ThemesState>(
+              builder: (context, state) {
+                return MaterialApp(
+                  title: 'Flutter Demo',
+                  theme:ThemesCubit.get(context).isDark?
+                  Themes.darkTheme: Themes.lightTheme,
+
+              ////////// flutter theme original one created by flutter is Theme without s
+
+              // theme: ThemeData(
+              //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              //   useMaterial3: true,
+              // ),
               onGenerateRoute: onGenerateRouter,
               initialRoute: AppRoute.registerScreen,
              //initialRoute: AppRoute.homeScreen,
+                  //////////// old home
 
-            ),
+                  // home: const LoginPage(),
+                  //  routes: {
+                  //    "login" : (context)=> const LoginPage(),
+                  //    "register" : (context)=> const RegisterPage()
+                  //  },
+                );
+  },
+),
           );
         }
     );

@@ -116,10 +116,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: const Text(
                                     "Open Gallery",
                                     style: TextStyle(color: Colors.black),
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
+                                  )), // gallery
+                              const SizedBox(width: 10,),
                               ElevatedButton(
                                   onPressed: () async {
                                     await AuthCubit.get(context).uploadPhoto(cam:"CAMERA");
@@ -130,8 +128,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                   child: const Text(
                                     "Open Camera",
-                                    style: TextStyle(color: Colors.black),
-                                  )),
+                                    style:TextStyle(color: Colors.black),
+                                  )), // camera
                             ],
                           ), // pic photo
                           const SizedBox(
@@ -164,7 +162,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           //           borderRadius: BorderRadius.circular(30)),
                           //     ),
                           //   ), // register
-
                           SizedBox(
                             width: w * .5,
                             child: ElevatedButton(
@@ -176,18 +173,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       email: emailController.text,
                                       password:
                                       passwordController.text);
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       content:
                                       Text('Successfully Register'),
                                       duration: Duration(seconds: 2),
                                     ),
                                   );
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context,
-                                      AppRoute.homeScreen,
-                                          (route) => false);
+                                  Navigator.pushNamedAndRemoveUntil(context, AppRoute.homeScreen, (route) => false);
 // await cubit.getAllUser();
                                 } },
                               style: ElevatedButton.styleFrom(
