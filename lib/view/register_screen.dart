@@ -60,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             fontWeight: FontWeight.bold,
                             // textColor: AppTheme.kPrimaryColor
                           ), // title
-                          const SizedBox(height: 20, ),
+                          const SizedBox(height: 10, ),
                           DefaultFormField(
                               labelText: "name",
                               controller: nameController,
@@ -72,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   return null;
                                 }
                               }), //name
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 10,),
                           DefaultFormField(
                               labelText: "email",
                               controller: emailController,
@@ -98,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               validator: (value) {
                               if (value!.isEmpty) {
                                 return "password cannot be empty ";
-                              }}), // passw0rd
+                              }}), // password
                           const SizedBox(
                             height: 10,
                           ),
@@ -135,36 +135,74 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ],
                           ), // pic photo
                           const SizedBox(
-                            height: 15,
+                            height: 10,
                           ),
-                          ElevatedButton(
+                          // ElevatedButton(
+                          //     onPressed: () async {
+                          //       if (formKey.currentState!.validate()) {
+                          //         await AuthCubit.get(context).registerByEmailAndPassword(
+                          //             email: emailController.text,
+                          //             name: nameController.text,
+                          //             password: passwordController.text);
+                          //         print(passwordController.text);
+                          //         ScaffoldMessenger.of(context).showSnackBar(
+                          //           const SnackBar(
+                          //             content: Text(
+                          //                 'Successfully Register.You Can Chat Now'),
+                          //             duration: Duration(seconds: 2),
+                          //           ),
+                          //         );
+                          //         // Navigator.of(context).pop();
+                          //         Navigator.pushNamedAndRemoveUntil(context, AppRoute.homeScreen, (route) => false);
+                          //         //await AuthCubit.getAllUser();
+                          //       }
+                          //     },
+                          //     child:  DefaultText(text: "register"),
+                          //     style: ElevatedButton.styleFrom(
+                          //       //primary: kSecondaryColor,
+                          //       shape: RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(30)),
+                          //     ),
+                          //   ), // register
+
+                          SizedBox(
+                            width: w * .5,
+                            child: ElevatedButton(
                               onPressed: () async {
                                 if (formKey.currentState!.validate()) {
-                                  await AuthCubit.get(context).registerByEmailAndPassword(
-                                      email: emailController.text,
+                                  await AuthCubit.get(context)
+                                      .registerByEmailAndPassword(
                                       name: nameController.text,
-                                      password: passwordController.text);
-                                  await ScaffoldMessenger.of(context).showSnackBar(
+                                      email: emailController.text,
+                                      password:
+                                      passwordController.text);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(
                                     const SnackBar(
-                                      content: Text(
-                                          'Successfully Register.You Can Chat Now'),
+                                      content:
+                                      Text('Successfully Register'),
                                       duration: Duration(seconds: 2),
                                     ),
                                   );
-                                  // Navigator.of(context).pop();
-                                  await Navigator.pushNamedAndRemoveUntil(context, AppRoute.loginScreen, (route) => false);
-                                  //await AuthCubit.getAllUser();
-                                }
-                              },
-                              child:  DefaultText(text: "register"),
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      AppRoute.homeScreen,
+                                          (route) => false);
+// await cubit.getAllUser();
+                                } },
                               style: ElevatedButton.styleFrom(
-                                //primary: kSecondaryColor,
+//primary: kSecondaryColor,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
+                                    borderRadius:
+                                    BorderRadius.circular(30)),
                               ),
-                            ), // register
+                              child: const DefaultText(text: "register"),
+                            ),
+                          ),
+
+
                           const SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -192,7 +230,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               )
                             ],
                           ),
-
+                          //const SizedBox(height: 20.0,),
+                         Row(
+                              children: [
+                                const Text(" Have an account?"),
+                                SizedBox(width: 10.0,),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacementNamed("LoginScreen");
+                                  },
+                                  child:const Text(
+                                    "Login",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      // color: AppTheme.kPrimaryColor),
+                                    ),
+                                  ),
+                                )],
+                            ),
                         ],
                       ),
                     ),

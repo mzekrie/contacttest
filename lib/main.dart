@@ -50,7 +50,9 @@ class MyApp extends StatelessWidget {
               //    "register" : (context)=> const RegisterPage()
               //  },
               onGenerateRoute: onGenerateRouter,
-              initialRoute: AppRoute.homeScreen,
+              initialRoute: AppRoute.registerScreen,
+             //initialRoute: AppRoute.homeScreen,
+
             ),
           );
         }

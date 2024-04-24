@@ -23,17 +23,35 @@ class AuthCubit extends Cubit<AuthState> {
   FirebaseStorage storage =FirebaseStorage.instance;
 // register email& password
 
+  // registerByEmailAndPassword({required String name,
+  //   required String email ,
+  //   required String password,
+  // })async{
+  //   UserCredential userCredential =
+  //   await  auth.createUserWithEmailAndPassword(email: email, password: password);
+  //   await storage.ref().child("image/").child("${userModel.id} as camera.png").putFile(File(image!.path));
+  //   userModel.pic = await storage.ref().child("image/").child("${userModel.id}.png").getDownloadURL();
+  //   userModel.email = email;
+  //   userModel.id= userCredential.user!.uid;
+  //   userModel.name = name;
+  //   userModel.password = password.toString();
+  //   await store.collection("profile").doc(userModel.id).
+  //   set(userModel.toMap()) ;
+  //   emit(AuthRegisterByEmailState());
+  // }
+
   registerByEmailAndPassword({required String name,
     required String email ,
     required String password,
   })async{
     UserCredential userCredential =
-    await  auth.createUserWithEmailAndPassword(email: email, password: password);
-    await storage.ref().child("image/").child("${userModel.id} as camera.png").putFile(File(image!.path));
-    userModel.pic = await storage.ref().child("image/").child("${userModel.id}.png").getDownloadURL();
-    userModel.email = email;
+    await auth.createUserWithEmailAndPassword(email: email, password: password);
     userModel.id= userCredential.user!.uid;
+    // await storage.ref().child("image/").child("${userModel.id}").putFile(File(image!.path));
+    // userModel.pic = await storage.ref().child("image/").child("${userModel.id}").getDownloadURL();
+    userModel.email = email;
     userModel.name = name;
+    userModel.password = password.toString();
     await store.collection("profile").doc(userModel.id).
     set(userModel.toMap()) ;
     emit(AuthRegisterByEmailState());

@@ -37,7 +37,7 @@ class ContactCubit extends Cubit<ContactState> {
       "phone":phone,
       "type": "noFavorite"
     }).then((value) {
-      //getContact()
+      getContact();
       emit(UpdateContactSuccessState());
     }).catchError((error){
       emit(UpdateContactErrorState());
@@ -49,6 +49,7 @@ class ContactCubit extends Cubit<ContactState> {
       'type': type,
     }).then((value) {
       getContact();
+      getFavorite();
       emit(UpdateFavoriteSuccessState());
     }).catchError((error) {
       emit(UpdateFavoriteErrorState());
@@ -86,6 +87,8 @@ class ContactCubit extends Cubit<ContactState> {
 
   deleteContact({required int id})async{
     await store.collection("Contacts").doc(id.toString()).delete().then((value) {
+      getContact();
+      getFavorite();
       emit(DeleteSuccessState());
     });
   }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/cupertino.dart';
+import '../Shared/constant.dart';
 import '../cubit/contact_cubit/contact_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,11 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var scaffoldKey = GlobalKey<ScaffoldState>();
-  var formKey = GlobalKey<FormState>();
-  var nameController = TextEditingController();
-  var phoneController = TextEditingController();
-  CountryCode myCountry = CountryCode(name: "EG", dialCode: "+20");
+
 
   @override
   Widget build(BuildContext context) {
