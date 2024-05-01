@@ -34,11 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
             appBar: AppBar(
               title: Text(ContactCubit.get(context).title
               [ContactCubit.get(context).currentIndex]),
-                actions:[Switch(value: ThemesCubit.get(context).isDark,
+                actions:[ Switch(value: ThemesCubit.get(context).isDark,
                     onChanged: (value){
                       ThemesCubit.get(context).changeTheme();
                     }
-                )],
+                ),
+],
             ),
             key: scaffoldKey,
             body: Stack(
