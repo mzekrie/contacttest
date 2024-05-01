@@ -15,8 +15,8 @@ import 'firebase_options.dart';
 import 'package:sizer/sizer.dart';
 
 void main() async {
-  CacheHelper.init();
   WidgetsFlutterBinding.ensureInitialized();
+  CacheHelper.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -42,11 +42,14 @@ class MyApp extends StatelessWidget {
                 create: (context) => ContactCubit() ..getContact()..getFavorite(), //to load the data of the list without inserting upon login to the page
               ),
               BlocProvider(
-                create: (context) => ThemesCubit() ,
+                create: (context) => ThemesCubit(),
               ),
             ],
             child: BlocBuilder<ThemesCubit, ThemesState>(
               builder: (context, state) {
+                ThemesCubit.get(context).getTheme();
+                // ThemesCubit cubit = ThemesCubit.get(context);
+                // cubit.getTheme();
                 return MaterialApp(
                   title: 'Flutter Demo',
                   theme:ThemesCubit.get(context).isDark?
