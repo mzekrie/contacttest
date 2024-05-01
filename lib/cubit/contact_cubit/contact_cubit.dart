@@ -35,7 +35,7 @@ class ContactCubit extends Cubit<ContactState> {
     await store.collection("Contacts").doc(id.toString()).update({
       "name":name,
       "phone":phone,
-      "type": "noFavorite"
+      //"type": "noFavorite"
     }).then((value) {
       getContact();
       emit(UpdateContactSuccessState());
@@ -74,10 +74,11 @@ class ContactCubit extends Cubit<ContactState> {
   }
 
   getFavorite()async{
-   favoriteList.clear();
+    //favoriteList.clear();
+    favoriteList =[];
     emit(LoadingGetFavoriteState());
-    await store.collection("Contact").where("type",isEqualTo:"Favorite" ).get()
-        .then((value){
+    //await store.collection("Contact").where("type",isEqualTo:"Favorite").get()
+    await store.collection("Contact").get().then((value){
       for(QueryDocumentSnapshot<Map<String,dynamic>> element in value.docs) {
         favoriteList.add(element.data());
         emit(GetFavoriteSuccessState());
@@ -87,7 +88,7 @@ class ContactCubit extends Cubit<ContactState> {
 
   deleteContact({required int id})async{
     await store.collection("Contacts").doc(id.toString()).delete().then((value) {
-      getContact();
+      getContact(); // after deleting we call the get function to refresh the page
       getFavorite();
       emit(DeleteSuccessState());
     });

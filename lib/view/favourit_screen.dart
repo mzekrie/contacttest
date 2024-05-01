@@ -15,7 +15,7 @@ class FavoriteScreen extends StatelessWidget {
             .get(context)
             .favoriteList,
             contactType: 'Favorite',
-            noContacts: 'No Favorite');
+            noContacts: 'No Favorite Data');
       },
     );
   }

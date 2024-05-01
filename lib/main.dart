@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contacttest/cubit/auth/auth_cubit.dart';
 import 'package:contacttest/cubit/contact_cubit/contact_cubit.dart';
 import 'package:contacttest/cubit/themes_cubit/themes_cubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Shared/app_theme.dart';
+import 'Shared/cache_helper.dart';
 import 'cubit/observer.dart';
 import 'router/router.dart';
 import 'router/route.dart';
@@ -13,6 +15,7 @@ import 'firebase_options.dart';
 import 'package:sizer/sizer.dart';
 
 void main() async {
+  CacheHelper.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -56,8 +59,8 @@ class MyApp extends StatelessWidget {
               //   useMaterial3: true,
               // ),
               onGenerateRoute: onGenerateRouter,
-              initialRoute: AppRoute.registerScreen,
-             //initialRoute: AppRoute.homeScreen,
+             // initialRoute: AppRoute.registerScreen,
+             initialRoute: AppRoute.homeScreen,
                   //////////// old home
 
                   // home: const LoginPage(),

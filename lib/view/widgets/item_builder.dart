@@ -75,18 +75,22 @@ class BuilderItem extends StatelessWidget {
                     DefaultText(text: contactItem['phone']),
                   ],
                 ),
+
+                // change card to be favoruite
                 Visibility(
                     visible: contactItem["type"] =='Favorite',
+                   ////
                     replacement:IconButton(onPressed: ()async{
                       await ContactCubit.get(context).updateFavorite(
                           id: contactItem['id'],
                           type: "Favorite");
                     },
                       icon: const Icon(Icons.favorite, color: Colors.grey,),) ,
+                    // when the icon is clicked , it will be added to the favourite
                     child: IconButton(onPressed: ()async{
                       await ContactCubit.get(context).updateFavorite(
                           id: contactItem['id'],
-                          type: "All");
+                          type: "Favorite");
                     },
                       icon: const Icon(Icons.favorite, color: Colors.red,),))
 
@@ -136,16 +140,3 @@ class ListContactItem extends StatelessWidget {
     );
   }
 }
-
-// Widget listContactItem ({required List listItem}){
-//return
-//}'
-
-// we will do the above class instead of the widget to be able to display No data message
-// Widget listContactItem ({required List listItem}){
-//   return ListView.separated(
-//       separatorBuilder: (context, index)=> SizedBox(height: 2.h,),
-//       itemCount: listItem.length,
-//       itemBuilder: (context,index)=> BuilderItem(contactItem: listItem[index],),
-//       );
-// }
