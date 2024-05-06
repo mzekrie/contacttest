@@ -28,8 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Image.network(
-              'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png'),
+         Image.asset("assets/images/splash1.png"),
+          // Image.network(
+          //     'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png'),
           SizedBox(
             height: 2.h,
           ),

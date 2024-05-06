@@ -1,5 +1,6 @@
 
- import 'package:contacttest/view/widgets/default_text.dart';
+ import 'package:contacttest/model/onboarding_model.dart';
+import 'package:contacttest/view/widgets/default_text.dart';
  import 'package:contacttest/view/widgets/onboarding_builder.dart';
  import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
