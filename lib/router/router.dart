@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../view/login_screen.dart';
 import '../../view/register_screen.dart';
 import '../../view/splash_screen.dart';
+import '../view/OnBoarding_screen.dart';
 import '../view/home_screen.dart';
 import 'route.dart';
 // import 'package:firebase48online/core/constants.dart' as screens;
@@ -12,13 +13,13 @@ import 'route.dart';
 Route? onGenerateRouter(RouteSettings settings){
   switch(settings.name){
     case AppRoute.splashScreen :
-      return MaterialPageRoute(builder: (_)=>const SplashScreen() );
-  // case AppRoute.onBoardingScreen :
-  //   return MaterialPageRoute(builder: (_)=> const OnBoarding() );
+      return MaterialPageRoute(builder: (_)=> SplashScreen() );
+      case AppRoute.onBoardingScreen :
+      return MaterialPageRoute(builder: (_)=>  OnBoardingScreen() );
     case AppRoute.loginScreen :
       return MaterialPageRoute(builder: (_)=> LoginScreen() );
     case AppRoute.registerScreen :
-      return MaterialPageRoute(builder: (_)=>const RegisterScreen() );
+      return MaterialPageRoute(builder: (_)=> RegisterScreen() );
   case AppRoute.homeScreen :
     return MaterialPageRoute(builder: (_)=>HomeScreen() );
     default :

@@ -62,8 +62,10 @@ class MyApp extends StatelessWidget {
               //   useMaterial3: true,
               // ),
               onGenerateRoute: onGenerateRouter,
-             // initialRoute: AppRoute.registerScreen,
-             initialRoute: AppRoute.homeScreen,
+             //initialRoute: AppRoute.registerScreen,
+             //initialRoute: AppRoute.homeScreen,
+                  initialRoute: AppRoute.splashScreen,
+
                   //////////// old home
 
                   // home: const LoginPage(),
